@@ -1,13 +1,159 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>ElitePips</title>
-<meta name="description" content="Answer one quick question to join free Forex signals on Telegram. Limited access available!"/>
-<meta name="theme-color" content="#001022">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GUJARATI (TRADER)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-<!-- Meta Pixel -->
+        body {
+            background: #030712;
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Relaxing Space / Starry Background */
+        #canvas-stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Glowing Radial Background Accents */
+        .bg-glow-top {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(0,0,0,0) 80%);
+            border-radius: 50%;
+            filter: blur(40px);
+            z-index: 1;
+            pointer-events: none;
+            animation: pulseGlow 6s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
+            100% { opacity: 0.95; transform: translateX(-50%) scale(1.15); }
+        }
+
+        /* Glassmorphism Card Styling */
+        .glass-card {
+            background: rgba(13, 20, 38, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .glass-inner-card {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animated Glowing Pulse Button */
+        .btn-pulse-glow {
+            position: relative;
+            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
+            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: buttonGlow 2.5s infinite;
+            overflow: hidden;
+        }
+
+        .btn-pulse-glow::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                60deg,
+                transparent,
+                rgba(255, 255, 255, 0.25),
+                transparent
+            );
+            transform: rotate(30deg);
+            animation: shineEffect 3.5s infinite;
+        }
+
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 30px rgba(37, 99, 235, 0.2); }
+            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8), 0 0 50px rgba(37, 99, 235, 0.4); }
+            100% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 30px rgba(37, 99, 235, 0.2); }
+        }
+
+        @keyframes shineEffect {
+            0% { left: -100%; }
+            20% { left: 100%; }
+            100% { left: 100%; }
+        }
+
+        /* Fade In Animation */
+        .fade-in-up {
+            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Avatar Outer Ring Animation */
+        .avatar-ring {
+            background: linear-gradient(135deg, #3b82f6, #6366f1, #60a5fa);
+            background-size: 200% 200%;
+            animation: gradientBorder 4s ease infinite;
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Float animation */
+        .floating-badge {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-4px); }
+        }
+
+        .check-icon-glow {
+            filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
+        }
+    </style>
+<!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -17,180 +163,207 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1593721464926438');
+fbq('init', '1778328233311717');
 fbq('track', 'PageView');
 </script>
-
-<style>
-:root{
-  --accent1:#ff7a00;
-  --accent2:#ff4d00;
-  --text:#e6eefb;
-  --muted:#bfcfe6;
-  --card-bg:rgba(6,8,15,0.9);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{height:100%}
-body{
-  background:linear-gradient(160deg,#001022,#002a4a);
-  display:flex;align-items:center;justify-content:center;
-  padding:18px;color:var(--text);
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
-}
-.container{
-  width:100%;max-width:640px;
-  background:var(--card-bg);
-  border-radius:14px;padding:20px;
-  box-shadow:0 24px 60px rgba(0,10,30,0.6);
-  position:relative;overflow:hidden;color:var(--text);
-}
-.progressWrap{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.progress{flex:1;height:9px;background:rgba(255,255,255,0.03);border-radius:999px;overflow:hidden}
-.progress>i{display:block;height:100%;background:linear-gradient(90deg,var(--accent1),var(--accent2));width:0;transition:width .45s ease}
-.progressNum{min-width:44px;text-align:right;color:var(--muted);font-weight:700;font-size:13px}
-.question{animation:fadeIn .32s ease;text-align:center;margin-bottom:14px}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.hype{
-  display:inline-block;padding:10px 14px;border-radius:12px;font-weight:900;font-size:20px;
-  background:linear-gradient(90deg,#ffd9b3,#ffb48a);color:#1b0520;
-  box-shadow:0 8px 30px rgba(255,120,0,0.12);
-}
-.hype.small{font-size:16px;padding:8px 12px}
-.pulse{animation:pulse 1.6s infinite}
-@keyframes pulse{0%{transform:scale(1)}50%{transform:scale(1.03)}100%{transform:scale(1)}}
-.options{display:flex;flex-direction:column;gap:10px;margin-top:12px}
-.option{
-  background:rgba(255,255,255,0.02);
-  border-radius:12px;padding:12px 14px;cursor:pointer;font-weight:800;text-align:center;
-  border:1px solid rgba(255,255,255,0.04);
-  box-shadow:0 8px 30px rgba(0,0,0,0.5);
-  transition:transform .16s,box-shadow .16s,background .16s;
-}
-.option:hover{transform:translateY(-6px);box-shadow:0 18px 46px rgba(255,90,0,0.12);background:linear-gradient(90deg,rgba(255,90,0,0.08),rgba(255,150,0,0.06));}
-.option.selected{background:linear-gradient(90deg,rgba(255,120,0,0.18),rgba(255,60,0,0.12));color:#fff;transform:translateY(-8px)}
-.thankyou{text-align:center;padding:6px}
-.thank-h{font-size:20px;margin:6px 0;font-weight:900}
-.thank-sub{color:var(--muted);margin-bottom:12px}
-.join-btn{
-  display:inline-block;position:relative;overflow:hidden;
-  background:linear-gradient(90deg,#ff7a00,#ff4d00);
-  color:#fff;padding:12px 18px;border-radius:12px;font-weight:900;text-decoration:none;
-  box-shadow:0 14px 40px rgba(255,90,0,0.18);
-}
-.join-btn::after{content:'';position:absolute;left:-50%;top:0;width:40%;height:100%;background:linear-gradient(120deg,rgba(255,255,255,0)0%,rgba(255,255,255,0.14)50%,rgba(255,255,255,0)100%);transform:skewX(-20deg);filter:blur(6px);animation:shine 3.4s linear infinite}
-@keyframes shine{0%{left:-60%}100%{left:120%}}
-.fomo{background:linear-gradient(90deg,#ffe6d6,#ffd0b3);color:#2b0a00;padding:8px 12px;border-radius:10px;font-weight:800;display:inline-block;margin:10px 0;font-size:13px}
-.small{font-size:13px;color:var(--muted);margin-top:8px}
-.row{display:flex;gap:10px;justify-content:center;margin-top:12px}
-.btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.06);background:transparent;color:var(--text);font-weight:700;text-decoration:none;cursor:pointer}
-@media (max-width:520px){.container{padding:14px}.hype{font-size:18px}}
-</style>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1778328233311717&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+    
 </head>
+<body class="flex justify-center items-center py-6 px-4">
 
-<body>
-<main class="container" id="card">
-  <div class="progressWrap">
-    <div class="progress"><i id="bar"></i></div>
-    <div class="progressNum" id="progNum">0%</div>
-  </div>
-  <div id="q-box"></div>
-</main>
+    <!-- Starfield Canvas -->
+    <canvas id="canvas-stars"></canvas>
 
-<script>
-/* Deep-link setup */
-const telegramAppLink = "tg://join?invite=ZrjDtoQ9Tgw3ZWQ1";
-const telegramWebLink = "https://t.me/+ZrjDtoQ9Tgw3ZWQ1";
+    <!-- Glowing Background Aura -->
+    <div class="bg-glow-top"></div>
 
-let answered=false;
-const qBox=document.getElementById('q-box'),
-      bar=document.getElementById('bar'),
-      progNum=document.getElementById('progNum');
+    <!-- Main Mobile Container -->
+    <div class="relative z-10 w-full max-w-[390px] glass-card rounded-[32px] p-6 text-center fade-in-up">
+        
+        <!-- Profile Section -->
+        <div class="relative flex justify-center mb-4">
+            <div class="avatar-ring p-[3px] rounded-full shadow-2xl">
+                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#030712] relative bg-slate-900">
+                    <img src="Gujarati.jpeg" 
+                         alt="GUJARATI (TRADER)" 
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
+            <!-- Verified Badge -->
+            <div class="absolute bottom-0 right-1/2 translate-x-10 translate-y-1 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-[#080d1a] text-[10px] shadow-lg">
+                <i class="fa-solid fa-check"></i>
+            </div>
+        </div>
 
-function renderSingleQuestion(){
-  qBox.innerHTML = `
-    <div class="question">
-      <div class="hype pulse">🔥 LIVE Forex signals — traders are booking entries now!</div>
-      <div style="height:10px"></div>
-      <div class="options">
-        <div class="option" data-val="yes">Yes — show me live setups</div>
-        <div class="option" data-val="no">No — not right now</div>
-      </div>
-      <div class="small">Tap one — it only takes a second. Limited access for serious traders only.</div>
+        <!-- Name & Title Header -->
+        <h1 class="text-2xl font-black tracking-tight text-white uppercase mb-2 drop-shadow-md">
+            GUJARATI (TRADER)
+        </h1>
+
+        <!-- Badge Tag -->
+        <div class="inline-flex items-center gap-1.5 bg-blue-950/80 border border-blue-500/40 text-blue-300 text-[11px] font-bold px-4 py-1.5 rounded-full mb-6 floating-badge shadow-lg">
+            <span class="text-yellow-400">⚡</span> NIFTY • BANKNIFTY • OPTIONS <span class="text-yellow-400">⚡</span>
+        </div>
+
+        <!-- Top CTA Button -->
+        <a href="https://t.me/+3cr7KekzaplmYmNl" target="_blank" onclick="trackSubscribeEvent()" class="btn-pulse-glow flex items-center justify-center gap-2.5 text-white font-extrabold py-3.5 px-6 rounded-2xl w-full text-base mb-6 active:scale-95 transition-transform">
+            <i class="fa-paper-plane text-lg text-blue-200"></i>
+            <span>JOIN TELEGRAM CHANNEL</span>
+            <span class="text-lg">🚀</span>
+        </a>
+
+        <!-- Features Inner Glass Box -->
+        <div class="glass-inner-card rounded-2xl p-5 mb-6 text-left relative overflow-hidden">
+            <div class="flex items-center gap-2 mb-4 border-b border-blue-900/40 pb-3">
+                <span class="text-xl">📊</span>
+                <h2 class="text-sm font-extrabold text-blue-100 tracking-wide uppercase">
+                    NIFTY BANKNIFTY & STOCK OPTIONS
+                </h2>
+            </div>
+
+            <!-- List Features -->
+            <ul class="space-y-3.5 text-sm text-slate-200 font-semibold mb-5">
+                <li class="flex items-start gap-3">
+                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <span class="text-slate-100 leading-snug">Get up to <strong class="text-emerald-400 font-bold">100-300 Points</strong> Daily</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <span class="text-slate-100 leading-snug"><strong class="text-emerald-400 font-bold">80-90%</strong> High Accuracy Calls</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <span class="text-slate-100 leading-snug">3-4 Observational Calls Daily</span>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
+                        <i class="fa-solid fa-circle-check"></i>
+                        <i class="fa-solid fa-circle-check"></i>
+                    </span>
+                    <span class="text-slate-100 leading-snug">3 Daily Best Trades For Everyone</span>
+                </li>
+            </ul>
+
+            <!-- Notice Highlights -->
+            <div class="space-y-2">
+                <div class="bg-blue-950/60 border border-blue-500/30 rounded-xl p-2.5 text-center text-xs text-blue-200 font-bold flex items-center justify-center gap-2">
+                    <span>📣</span> Disclaimer: DAILY FREE DEMO CALL <span class="text-emerald-400">✅</span>
+                </div>
+
+                <div class="bg-rose-950/40 border border-rose-500/30 rounded-xl p-2.5 text-center text-[11px] text-rose-200 font-bold flex items-center justify-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
+                    <span>LIVE STOCK ANALYSIS • MARKET UPDATES • FII/DII DATA</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Bottom CTA Button -->
+        <a href="https://t.me/+3cr7KekzaplmYmNl" target="_blank" onclick="trackSubscribeEvent()" class="btn-pulse-glow flex items-center justify-center gap-2.5 text-white font-black py-4 px-6 rounded-2xl w-full text-lg mb-5 active:scale-95 transition-transform tracking-wider">
+            <span class="text-yellow-300">⚡</span>
+            <span>JOIN TELEGRAM NOW</span>
+            <span class="text-xl">💎</span>
+        </a>
+
+        <!-- Meta Pixel Active Tag -->
+        <div class="inline-flex items-center gap-2 bg-slate-900/80 border border-blue-800/40 text-blue-300 text-[11px] px-3.5 py-1.5 rounded-full mb-4 font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span>Meta Pixel Active</span>
+            <span class="text-slate-500">•</span>
+            <span class="text-slate-400">ID: 1778328233311717</span>
+        </div>
+
+        <div class="border-t border-slate-800/80 pt-3">
+            <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5 font-medium">
+                <i class="fa-solid fa-lock text-blue-400"></i>
+                <span>Instant Access</span> • <span>5000+ Members</span> • <span>Daily Free Calls</span>
+            </p>
+            <p class="text-[10px] text-slate-500 mt-1 font-normal">
+                © GUJARATI (TRADER) — Market Intelligence
+            </p>
+        </div>
+
     </div>
-  `;
-  updateProgress(0);
-  document.querySelectorAll('.option').forEach(o=>o.addEventListener('click',onChooseSingle));
-}
 
-function updateProgress(pct){
-  bar.style.width = pct + "%";
-  progNum.textContent = pct + "%";
-}
+    <!-- Starfield Animation & Pixel Tracking Script -->
+    <script>
+        // Meta Pixel Real-time Subscribe Event Tracking
+        function trackSubscribeEvent() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Subscribe', {
+                    value: '0.00',
+                    currency: 'INR',
+                    predicted_ltv: '0.00'
+                });
+            }
+        }
 
-function onChooseSingle(ev){
-  if(answered) return;
-  answered=true;
-  const el = ev.currentTarget;
-  const val = el.getAttribute('data-val');
-  document.querySelectorAll('.option').forEach(o=>o.classList.remove('selected'));
-  el.classList.add('selected');
-  setTimeout(()=>{ updateProgress(100); showResultFor(val); },220);
-}
+        const canvas = document.getElementById('canvas-stars');
+        const ctx = canvas.getContext('2d');
 
-/* Deep redirect logic */
-function deepRedirect(){
-  const now = Date.now();
-  window.location.href = telegramAppLink;
-  setTimeout(()=>{ 
-    if(Date.now() - now < 2000){
-      window.location.href = telegramWebLink;
-    }
-  },900);
-}
+        let width, height;
+        let stars = [];
 
-/* Thank-you page with strong FOMO + forex theme text */
-function showResultFor(val){
-  if(val === 'yes'){
-    qBox.innerHTML = `
-      <div class="thankyou">
-        <div class="hype small">You're seconds away from real market updates 🚀</div>
-        <div class="thank-sub">Our experts share live Forex setups, entry zones & community discussions every day.</div>
-        <div><span class="fomo">⚡ Don’t miss the next breakout — join the signal group now!</span></div>
-        <div class="fomo">📊 Real-time trade setups, risk-managed analysis & daily learning sessions.</div>
-        <div class="fomo">⏰ New signal dropping soon — tap below before access closes.</div>
-        <div class="row" style="margin-top:16px">
-          <a id="joinBtn" class="join-btn" href="#" target="_blank" rel="noopener">Join Free Signals →</a>
-        </div>
-        <div class="count" style="margin-top:14px">Auto-redirecting in <span id="count">7</span>s...</div>
-      </div>
-    `;
-    let t=7; const count=document.getElementById('count');
-    const timer=setInterval(()=>{
-      t--; if(count) count.textContent = t;
-      if(t<=0){ clearInterval(timer); deepRedirect(); }
-    },1000);
-    setTimeout(()=>{ document.getElementById('joinBtn').addEventListener('click', deepRedirect); },50);
-  } else {
-    qBox.innerHTML = `
-      <div class="thankyou">
-        <div class="hype small">No worries — take your time 🙂</div>
-        <div class="thank-sub">You can always explore our free community & educational content later.</div>
-        <div class="row">
-          <button id="backBtn" class="btn-ghost">Back</button>
-          <a id="learnBtn" class="join-btn" href="#" target="_blank" rel="noopener">Explore Community →</a>
-        </div>
-        <div class="small">Stay updated — more trading insights await you.</div>
-      </div>
-    `;
-    setTimeout(()=>{
-      document.getElementById('backBtn').addEventListener('click', ()=>{ answered=false; renderSingleQuestion(); });
-      document.getElementById('learnBtn').addEventListener('click', deepRedirect);
-    },50);
-  }
-}
+        function resizeCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            initStars();
+        }
 
-// initial render
-renderSingleQuestion();
-</script>
+        function initStars() {
+            stars = [];
+            const count = Math.floor((width * height) / 3000);
+            for (let i = 0; i < count; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    radius: Math.random() * 1.5 + 0.3,
+                    alpha: Math.random(),
+                    speed: Math.random() * 0.015 + 0.005,
+                    twinkleDir: Math.random() > 0.5 ? 1 : -1,
+                    color: ['#ffffff', '#a5f3fc', '#c7d2fe', '#fef08a'][Math.floor(Math.random() * 4)]
+                });
+            }
+        }
+
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+
+            stars.forEach(star => {
+                star.alpha += star.speed * star.twinkleDir;
+                if (star.alpha >= 0.9) star.twinkleDir = -1;
+                if (star.alpha <= 0.15) star.twinkleDir = 1;
+
+                star.y -= star.speed * 15;
+                if (star.y < 0) {
+                    star.y = height;
+                    star.x = Math.random() * width;
+                }
+
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fillStyle = star.color;
+                ctx.globalAlpha = Math.max(0, Math.min(1, star.alpha));
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+        animateStars();
+    </script>
 </body>
 </html>

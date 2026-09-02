@@ -1,159 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GUJARATI (TRADER)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-        
-        * {
-            box-sizing: border-box;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gujarati Trader</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
 
-        body {
-            background: #030712;
-            color: #ffffff;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
+    body {
+      background-color: #060608;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
 
-        /* Relaxing Space / Starry Background */
-        #canvas-stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
+    /* Professional Multi-Layer Ambient Glow Background */
+    .glow-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+      pointer-events: none;
+    }
 
-        /* Glowing Radial Background Accents */
-        .bg-glow-top {
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, rgba(37, 99, 235, 0.35) 0%, rgba(99, 102, 241, 0.15) 50%, rgba(0,0,0,0) 80%);
-            border-radius: 50%;
-            filter: blur(40px);
-            z-index: 1;
-            pointer-events: none;
-            animation: pulseGlow 6s ease-in-out infinite alternate;
-        }
+    .bg-glow-gold {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(255, 204, 0, 0.18) 0%, rgba(255, 204, 0, 0.05) 45%, rgba(0, 0, 0, 0) 70%);
+      top: 30%;
+      left: 50%;
+      transform: translate(-140%, -50%);
+      border-radius: 50%;
+      filter: blur(65px);
+      animation: floatGlowGold 10s ease-in-out infinite alternate;
+    }
 
-        @keyframes pulseGlow {
-            0% { opacity: 0.5; transform: translateX(-50%) scale(0.9); }
-            100% { opacity: 0.95; transform: translateX(-50%) scale(1.15); }
-        }
+    .bg-glow-blue {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 136, 204, 0.22) 0%, rgba(0, 136, 204, 0.05) 50%, rgba(0, 0, 0, 0) 75%);
+      top: 50%;
+      left: 50%;
+      transform: translate(30%, -40%);
+      border-radius: 50%;
+      filter: blur(75px);
+      animation: floatGlowBlue 12s ease-in-out infinite alternate;
+    }
 
-        /* Glassmorphism Card Styling */
-        .glass-card {
-            background: rgba(13, 20, 38, 0.7);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
+    .bg-glow-center {
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0) 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      filter: blur(40px);
+    }
 
-        .glass-inner-card {
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        }
+    /* Main Card Container with Glassmorphism */
+    .card {
+      position: relative;
+      z-index: 1;
+      background: rgba(18, 18, 22, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 28px;
+      width: 100%;
+      max-width: 420px;
+      padding: 32px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(0, 136, 204, 0.15);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-        /* Animated Glowing Pulse Button */
-        .btn-pulse-glow {
-            position: relative;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #1e40af 100%);
-            box-shadow: 0 0 20px rgba(37, 99, 235, 0.5);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            animation: buttonGlow 2.5s infinite;
-            overflow: hidden;
-        }
+    /* Profile Image */
+    .profile-img {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      border: 3px solid #ffcc00;
+      object-fit: cover;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(255, 204, 0, 0.45);
+      animation: zoomIn 0.8s cubic-bezier(0.16, 1, 0.3, 1), floatImage 4s ease-in-out infinite alternate;
+    }
 
-        .btn-pulse-glow::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                60deg,
-                transparent,
-                rgba(255, 255, 255, 0.25),
-                transparent
-            );
-            transform: rotate(30deg);
-            animation: shineEffect 3.5s infinite;
-        }
+    /* Title Section */
+    .title-container {
+      text-align: center;
+      margin-bottom: 12px;
+    }
 
-        @keyframes buttonGlow {
-            0% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 30px rgba(37, 99, 235, 0.2); }
-            50% { box-shadow: 0 0 25px rgba(59, 130, 246, 0.8), 0 0 50px rgba(37, 99, 235, 0.4); }
-            100% { box-shadow: 0 0 15px rgba(37, 99, 235, 0.4), 0 0 30px rgba(37, 99, 235, 0.2); }
-        }
+    .title {
+      color: #ffcc00;
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      text-shadow: 0 0 12px rgba(255, 204, 0, 0.3);
+    }
 
-        @keyframes shineEffect {
-            0% { left: -100%; }
-            20% { left: 100%; }
-            100% { left: 100%; }
-        }
+    .crown {
+      font-size: 18px;
+      animation: glowCrown 2s infinite alternate;
+    }
 
-        /* Fade In Animation */
-        .fade-in-up {
-            animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+    /* Subtitle Tag */
+    .tagline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 14px;
+      color: #e0e0e0;
+      margin-top: 8px;
+      margin-bottom: 24px;
+    }
 
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .check-icon {
+      background-color: #22c55e;
+      color: #000;
+      font-size: 10px;
+      font-weight: bold;
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        /* Avatar Outer Ring Animation */
-        .avatar-ring {
-            background: linear-gradient(135deg, #3b82f6, #6366f1, #60a5fa);
-            background-size: 200% 200%;
-            animation: gradientBorder 4s ease infinite;
-        }
+    /* Info Buttons */
+    .info-btn {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+      cursor: default;
+    }
 
-        @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+    .info-btn:hover {
+      background-color: rgba(255, 204, 0, 0.12);
+      border-color: #ffcc00;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 204, 0, 0.15);
+    }
 
-        /* Float animation */
-        .floating-badge {
-            animation: float 4s ease-in-out infinite;
-        }
+    /* Main CTA Join Button */
+    .cta-button {
+      position: relative;
+      width: 100%;
+      background: linear-gradient(135deg, #0088cc, #005580);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 700;
+      padding: 16px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 8px 0 20px 0;
+      box-shadow: 0 4px 25px rgba(0, 136, 204, 0.55);
+      animation: pulse 2s infinite;
+      transition: transform 0.2s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+    }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-4px); }
-        }
+    /* Shimmer Effect on CTA Button */
+    .cta-button::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        60deg,
+        transparent 30%,
+        rgba(255, 255, 255, 0.35) 50%,
+        transparent 70%
+      );
+      transform: rotate(30deg);
+      animation: shimmer 3s infinite;
+    }
 
-        .check-icon-glow {
-            filter: drop-shadow(0 0 6px rgba(34, 197, 94, 0.6));
-        }
-    </style>
-<!-- Meta Pixel Code -->
+    .cta-button:hover {
+      box-shadow: 0 6px 30px rgba(0, 136, 204, 0.75);
+      transform: scale(1.02);
+    }
+
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    .telegram-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      z-index: 1;
+    }
+
+    .cta-button span {
+      z-index: 1;
+    }
+
+    /* Feature List Items */
+    .feature-item {
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 14px;
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .feature-item:hover {
+      background-color: rgba(255, 255, 255, 0.08);
+      border-color: rgba(255, 255, 255, 0.25);
+      transform: translateX(4px);
+    }
+
+    .feature-check {
+      background-color: #22c55e;
+      color: #000;
+      font-size: 11px;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 0 8px rgba(34, 197, 94, 0.4);
+    }
+
+    /* Footer Links */
+    .footer-links {
+      display: flex;
+      gap: 12px;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      width: 100%;
+      justify-content: center;
+    }
+
+    .footer-links button {
+      background: none;
+      border: none;
+      color: #888888;
+      font-size: 12px;
+      text-decoration: underline;
+      cursor: pointer;
+      transition: color 0.2s, transform 0.2s;
+    }
+
+    .footer-links button:hover {
+      color: #ffcc00;
+      transform: translateY(-1px);
+    }
+
+    /* Modal (Popup) Styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .modal-box {
+      background-color: #1a1a1e;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 400px;
+      padding: 24px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      transform: scale(0.85);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+    }
+
+    .modal-overlay.active .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffcc00;
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #fff;
+    }
+
+    .modal-body {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+      max-height: 250px;
+      overflow-y: auto;
+    }
+
+    /* Keyframe Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes floatImage {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-6px); }
+    }
+
+    @keyframes floatGlowGold {
+      0% { transform: translate(-140%, -50%) scale(1); }
+      100% { transform: translate(-120%, -40%) scale(1.15); }
+    }
+
+    @keyframes floatGlowBlue {
+      0% { transform: translate(30%, -40%) scale(1); }
+      100% { transform: translate(15%, -50%) scale(1.2); }
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0.7); }
+      70% { box-shadow: 0 0 0 18px rgba(0, 136, 204, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(0, 136, 204, 0); }
+    }
+
+    @keyframes shimmer {
+      0% { transform: translateX(-150%) rotate(30deg); }
+      100% { transform: translateX(150%) rotate(30deg); }
+    }
+
+    @keyframes glowCrown {
+      0% { filter: drop-shadow(0 0 2px rgba(255, 204, 0, 0.4)); }
+      100% { filter: drop-shadow(0 0 8px rgba(255, 204, 0, 0.9)); }
+    }
+  </style>
+
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -163,207 +431,118 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '951305321378718');
+fbq('init', '1547472326271150');
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=951305321378718&ev=PageView&noscript=1"
+src="https://www.facebook.com/tr?id=1547472326271150&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-    
 </head>
-<body class="flex justify-center items-center py-6 px-4">
+<body>
 
-    <!-- Starfield Canvas -->
-    <canvas id="canvas-stars"></canvas>
+  <div class="glow-container">
+    <div class="bg-glow-gold"></div>
+    <div class="bg-glow-blue"></div>
+    <div class="bg-glow-center"></div>
+  </div>
 
-    <!-- Glowing Background Aura -->
-    <div class="bg-glow-top"></div>
+  <div class="card">
+    <img src="Gujarati.jpeg" alt="GUJARATI (TRADER)" class="profile-img" />
 
-    <!-- Main Mobile Container -->
-    <div class="relative z-10 w-full max-w-[390px] glass-card rounded-[32px] p-6 text-center fade-in-up">
-        
-        <!-- Profile Section -->
-        <div class="relative flex justify-center mb-4">
-            <div class="avatar-ring p-[3px] rounded-full shadow-2xl">
-                <div class="w-24 h-24 rounded-full overflow-hidden border-2 border-[#030712] relative bg-slate-900">
-                    <img src="Gujarati.jpeg" 
-                         alt="GUJARATI (TRADER)" 
-                         class="w-full h-full object-cover">
-                </div>
-            </div>
-            <!-- Verified Badge -->
-            <div class="absolute bottom-0 right-1/2 translate-x-10 translate-y-1 bg-blue-600 text-white w-6 h-6 rounded-full flex items-center justify-center border-2 border-[#080d1a] text-[10px] shadow-lg">
-                <i class="fa-solid fa-check"></i>
-            </div>
-        </div>
-
-        <!-- Name & Title Header -->
-        <h1 class="text-2xl font-black tracking-tight text-white uppercase mb-2 drop-shadow-md">
-            GUJARATI (TRADER)
-        </h1>
-
-        <!-- Badge Tag -->
-        <div class="inline-flex items-center gap-1.5 bg-blue-950/80 border border-blue-500/40 text-blue-300 text-[11px] font-bold px-4 py-1.5 rounded-full mb-6 floating-badge shadow-lg">
-            <span class="text-yellow-400">⚡</span> NIFTY • BANKNIFTY • OPTIONS <span class="text-yellow-400">⚡</span>
-        </div>
-
-        <!-- Top CTA Button -->
-        <a href="https://t.me/+3cr7KekzaplmYmNl" target="_blank" onclick="trackSubscribeEvent()" class="btn-pulse-glow flex items-center justify-center gap-2.5 text-white font-extrabold py-3.5 px-6 rounded-2xl w-full text-base mb-6 active:scale-95 transition-transform">
-            <i class="fa-paper-plane text-lg text-blue-200"></i>
-            <span>JOIN TELEGRAM CHANNEL</span>
-            <span class="text-lg">🚀</span>
-        </a>
-
-        <!-- Features Inner Glass Box -->
-        <div class="glass-inner-card rounded-2xl p-5 mb-6 text-left relative overflow-hidden">
-            <div class="flex items-center gap-2 mb-4 border-b border-blue-900/40 pb-3">
-                <span class="text-xl">📊</span>
-                <h2 class="text-sm font-extrabold text-blue-100 tracking-wide uppercase">
-                    NIFTY BANKNIFTY & STOCK OPTIONS
-                </h2>
-            </div>
-
-            <!-- List Features -->
-            <ul class="space-y-3.5 text-sm text-slate-200 font-semibold mb-5">
-                <li class="flex items-start gap-3">
-                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </span>
-                    <span class="text-slate-100 leading-snug">Get up to <strong class="text-emerald-400 font-bold">100-300 Points</strong> Daily</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </span>
-                    <span class="text-slate-100 leading-snug"><strong class="text-emerald-400 font-bold">80-90%</strong> High Accuracy Calls</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </span>
-                    <span class="text-slate-100 leading-snug">3-4 Observational Calls Daily</span>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="flex gap-0.5 text-emerald-400 text-base check-icon-glow">
-                        <i class="fa-solid fa-circle-check"></i>
-                        <i class="fa-solid fa-circle-check"></i>
-                    </span>
-                    <span class="text-slate-100 leading-snug">3 Daily Best Trades For Everyone</span>
-                </li>
-            </ul>
-
-            <!-- Notice Highlights -->
-            <div class="space-y-2">
-                <div class="bg-blue-950/60 border border-blue-500/30 rounded-xl p-2.5 text-center text-xs text-blue-200 font-bold flex items-center justify-center gap-2">
-                    <span>📣</span> Disclaimer: DAILY FREE DEMO CALL <span class="text-emerald-400">✅</span>
-                </div>
-
-                <div class="bg-rose-950/40 border border-rose-500/30 rounded-xl p-2.5 text-center text-[11px] text-rose-200 font-bold flex items-center justify-center gap-1.5">
-                    <span class="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-                    <span>LIVE STOCK ANALYSIS • MARKET UPDATES • FII/DII DATA</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Main Bottom CTA Button -->
-        <a href="https://t.me/+3cr7KekzaplmYmNl" target="_blank" onclick="trackSubscribeEvent()" class="btn-pulse-glow flex items-center justify-center gap-2.5 text-white font-black py-4 px-6 rounded-2xl w-full text-lg mb-5 active:scale-95 transition-transform tracking-wider">
-            <span class="text-yellow-300">⚡</span>
-            <span>JOIN TELEGRAM NOW</span>
-            <span class="text-xl">💎</span>
-        </a>
-
-        <!-- Meta Pixel Active Tag -->
-        <div class="inline-flex items-center gap-2 bg-slate-900/80 border border-blue-800/40 text-blue-300 text-[11px] px-3.5 py-1.5 rounded-full mb-4 font-medium">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Meta Pixel Active</span>
-            <span class="text-slate-500">•</span>
-            <span class="text-slate-400">ID: 1778328233311717</span>
-        </div>
-
-        <div class="border-t border-slate-800/80 pt-3">
-            <p class="text-[11px] text-slate-400 flex items-center justify-center gap-1.5 font-medium">
-                <i class="fa-solid fa-lock text-blue-400"></i>
-                <span>Instant Access</span> • <span>5000+ Members</span> • <span>Daily Free Calls</span>
-            </p>
-            <p class="text-[10px] text-slate-500 mt-1 font-normal">
-                © GUJARATI (TRADER) — Market Intelligence
-            </p>
-        </div>
-
+    <div class="title-container">
+      <div class="title">
+        <span class="crown">👑</span> GUJARATI (TRADER) <span class="crown">👑</span>
+      </div>
     </div>
 
-    <!-- Starfield Animation & Pixel Tracking Script -->
-    <script>
-        // Meta Pixel Real-time Subscribe Event Tracking
-        function trackSubscribeEvent() {
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Subscribe', {
-                    value: '0.00',
-                    currency: 'INR',
-                    predicted_ltv: '0.00'
-                });
-            }
-        }
+    <div class="tagline">
+      <span class="check-icon">✓</span>
+      <span>Trusted by thousands of learners</span>
+    </div>
 
-        const canvas = document.getElementById('canvas-stars');
-        const ctx = canvas.getContext('2d');
+    <div class="info-btn">24/7 Updates</div>
+    <div class="info-btn">Free to Join</div>
 
-        let width, height;
-        let stars = [];
+    <a href="https://t.me/+3cr7KekzaplmYmNl" class="cta-button" target="_blank">
+      <svg class="telegram-icon" viewBox="0 0 24 24">
+        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.96 1.25-5.54 3.69-.52.36-1 .53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.75 4-1.74 6.68-2.88 8.04-3.44 3.83-1.58 4.62-1.86 5.14-1.87.11 0 .37.03.54.17.14.12.18.28.2.45-.02.07-.01.21-.02.32z"/>
+      </svg>
+      <span>Join on Telegram</span>
+    </a>
 
-        function resizeCanvas() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            initStars();
-        }
+    <div class="feature-item">
+      <span class="feature-check">✓</span>
+      <span>Market Insights & Discussions</span>
+    </div>
 
-        function initStars() {
-            stars = [];
-            const count = Math.floor((width * height) / 3000);
-            for (let i = 0; i < count; i++) {
-                stars.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    radius: Math.random() * 1.5 + 0.3,
-                    alpha: Math.random(),
-                    speed: Math.random() * 0.015 + 0.005,
-                    twinkleDir: Math.random() > 0.5 ? 1 : -1,
-                    color: ['#ffffff', '#a5f3fc', '#c7d2fe', '#fef08a'][Math.floor(Math.random() * 4)]
-                });
-            }
-        }
+    <div class="feature-item">
+      <span class="feature-check">✓</span>
+      <span>Learn with Experts</span>
+    </div>
 
-        function animateStars() {
-            ctx.clearRect(0, 0, width, height);
+    <div class="feature-item">
+      <span class="feature-check">✓</span>
+      <span>Practical Strategies</span>
+    </div>
 
-            stars.forEach(star => {
-                star.alpha += star.speed * star.twinkleDir;
-                if (star.alpha >= 0.9) star.twinkleDir = -1;
-                if (star.alpha <= 0.15) star.twinkleDir = 1;
+    <div class="footer-links">
+      <button onclick="openModal('about')">About Us</button>
+      <button onclick="openModal('terms')">Terms & Conditions</button>
+      <button onclick="openModal('disclaimer')">Disclaimer</button>
+      <button onclick="openModal('contact')">Contact Us</button>
+    </div>
+  </div>
 
-                star.y -= star.speed * 15;
-                if (star.y < 0) {
-                    star.y = height;
-                    star.x = Math.random() * width;
-                }
+  <div class="modal-overlay" id="infoModal" onclick="closeModalOnOutsideClick(event)">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div class="modal-title" id="modalTitle">Header</div>
+        <button class="close-btn" onclick="closeModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modalContent">
+        Content goes here...
+      </div>
+    </div>
+  </div>
 
-                ctx.beginPath();
-                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
-                ctx.fillStyle = star.color;
-                ctx.globalAlpha = Math.max(0, Math.min(1, star.alpha));
-                ctx.fill();
-            });
+  <script>
+    const modalData = {
+      about: {
+        title: "About Us",
+        content: "Welcome to GUJARATI (TRADER). We provide Educational Market Insights, Technical Analysis, and Stock Market Learning content."
+      },
+      terms: {
+        title: "Terms & Conditions",
+        content: "All content provided on this channel is strictly for educational purposes. We are not responsible for any financial profits or losses."
+      },
+      disclaimer: {
+        title: "Disclaimer",
+        content: "Trading and investing in stock markets involves financial risk. Consult your financial advisor before taking any investment decisions."
+      },
+      contact: {
+        title: "Contact Us",
+        content: "For inquiries and updates, connect with us on Telegram: <br><br><b>Telegram Link:</b> https://t.me/+3cr7KekzaplmYmNl"
+      }
+    };
 
-            requestAnimationFrame(animateStars);
-        }
+    function openModal(key) {
+      if (modalData[key]) {
+        document.getElementById('modalTitle').innerText = modalData[key].title;
+        document.getElementById('modalContent').innerHTML = modalData[key].content;
+        document.getElementById('infoModal').classList.add('active');
+      }
+    }
 
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        animateStars();
-    </script>
+    function closeModal() {
+      document.getElementById('infoModal').classList.remove('active');
+    }
+
+    function closeModalOnOutsideClick(e) {
+      if (e.target.classList.contains('modal-overlay')) {
+        closeModal();
+      }
+    }
+  </script>
+
 </body>
 </html>
